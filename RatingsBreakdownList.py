@@ -10,11 +10,11 @@ class RatingsBreakdown(MRJob):
 
     def mapper_get_ratings(self, _, line):
         #(userID, movieID, rating, timestamp) = line.split('\t')
-        i=0
-        while i<2:
+        #i=0
+        while True:
             alist = line.split('\t')
             print(alist)
-            i = i+1
+            #i = i+1
             userID = alist[0]
             #movieID = alist[1]
             #rating = alist[2]
