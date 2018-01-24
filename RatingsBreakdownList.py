@@ -1,3 +1,5 @@
+#Rating - Number of movies given that rating
+
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 
