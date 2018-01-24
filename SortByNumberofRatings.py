@@ -27,17 +27,19 @@ class RatingsBreakdown(MRJob):
         yield movieID, 1 #key-val pair
 
     def reducer_count_ratings(self, key, values):
-        yield str(sum(values)).zfill(5), key
+        yield str(sum(values)).zfill(5), key #responsible for sorting
         #yield sum(values), key #returns generator iterator but all data computed in just one call of the function
         #yield key, sum(values)
     
-    def reducer_sort_ratings(self, key, values): #should be yield output from previous reducer
+    def reducer_sort_ratings(self, count, movies): #should be yield output from previous reducer
         #remember streaming treats inputs and outputs as strings
-        sorterDict = {key:values}
-        keylist = sorterDict.keys()
-        keylist = sorted(keylist)
-        for key in keylist:
-            yield key, sorterDict[key] #returns generator iterator but all data computed in just one call of the function  
-
+        #sorterDict = {key:values}
+        #keylist = sorterDict.keys()
+        #keylist = sorted(keylist)
+        #for key in keylist:
+        #    yield key, sorterDict[key] #returns generator iterator but all data computed in just one call of the function  
+        for movie in movies:
+            yield movie, count
+        
 if __name__ == '__main__':
     RatingsBreakdown.run()
