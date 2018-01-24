@@ -14,7 +14,7 @@ class RatingsBreakdown(MRJob):
         while i<2:
             alist = line.split('\t')
             print(alist)
-            i++
+            i = i+1
             userID = alist[0]
             #movieID = alist[1]
             #rating = alist[2]
