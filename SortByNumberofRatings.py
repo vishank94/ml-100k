@@ -23,10 +23,10 @@ class RatingsBreakdown(MRJob):
         rating = alist[2]
         timestamp = alist[3]
         #ratingCount = ratingCount + 1
-        yield movieID, 1
+        yield movieID, 1 #key-val pair
 
     def reducer_count_ratings(self, key, values):
-        yield sum(values), movieID
+        yield sum(values), key
         #yield key, sum(values)
 
 if __name__ == '__main__':
