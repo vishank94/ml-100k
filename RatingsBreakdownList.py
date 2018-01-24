@@ -11,7 +11,7 @@ class hello():
     def mapper_get_ratings(self, _, line):
         #(userID, movieID, rating, timestamp) = line.split('\t')
         while True:
-			alist = ("My name is Vishank").split('\t')
+			alist = line.split('\t')
 
 			if len(alist) is 4:
 			break
