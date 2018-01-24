@@ -14,10 +14,10 @@ class RatingsBreakdown(MRJob):
             alist = line.split('\t')
             print(alist)
             userID = alist[0]
-            movieID = alist[1]
-            rating = alist[2]
-            timestamp = alist[3]
-            yield rating, 1
+            #movieID = alist[1]
+            #rating = alist[2]
+            #timestamp = alist[3]
+            #yield rating, 1
 
     def reducer_count_ratings(self, key, values):
         yield key, sum(values)
