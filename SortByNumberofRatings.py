@@ -7,7 +7,8 @@ class RatingsBreakdown(MRJob):
     def steps(self):
         return [
             MRStep(mapper=self.mapper_get_ratings,
-                   reducer=self.reducer_count_ratings)
+                   reducer1=self.reducer_count_ratings,
+                    reducer2=self.reducer_sort_ratings)
         ]
 
     def mapper_get_ratings(self, _, line):
@@ -26,8 +27,15 @@ class RatingsBreakdown(MRJob):
         yield movieID, 1 #key-val pair
 
     def reducer_count_ratings(self, key, values):
-        yield sum(values), key
+        yield sum(values), key #returns generator iterator but all data computed in just one call of the function
         #yield key, sum(values)
+    
+    def reducer_sort_ratings(self, key, values): #should be yield output from previous reducer
+        sorterDict = {key:values}
+        keylist = sorterDict.keys()
+        keylist.sort()
+        for key in keylist:
+            yield key, sorterDict[key] #returns generator iterator but all data computed in just one call of the function  
 
 if __name__ == '__main__':
     RatingsBreakdown.run()
