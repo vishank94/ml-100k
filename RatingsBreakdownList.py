@@ -12,9 +12,8 @@ class RatingsBreakdown(MRJob):
         #(userID, movieID, rating, timestamp) = line.split('\t')
         while True:
             alist = line.split('\t')
-
-        #    if len(alist) is 4:
-        #        break
+            #    if len(alist) is 4:
+            #        break
             userID = alist[0]
             movieID = alist[1]
             rating = alist[2]
