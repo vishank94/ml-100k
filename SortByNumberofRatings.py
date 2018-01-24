@@ -27,7 +27,8 @@ class RatingsBreakdown(MRJob):
         yield movieID, 1 #key-val pair
 
     def reducer_count_ratings(self, key, values):
-        yield sum(values), key #returns generator iterator but all data computed in just one call of the function
+        yield str(sum(values)).zfill(5), key
+        #yield sum(values), key #returns generator iterator but all data computed in just one call of the function
         #yield key, sum(values)
     
     def reducer_sort_ratings(self, key, values): #should be yield output from previous reducer
