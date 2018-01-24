@@ -7,7 +7,7 @@ class RatingsBreakdown(MRJob):
     def steps(self):
         return [
             MRStep(mapper=self.mapper_get_ratings,
-                   reducer=self.reducer_count_ratings)
+                   reducer=self.reducer_count_ratings), #note second MRStep is within the first one
             MRStep(reducer=self.reducer_sort_ratings)
         ]
 
