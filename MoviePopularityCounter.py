@@ -1,3 +1,5 @@
+#movieID - Number of ratings for that movie
+
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 
