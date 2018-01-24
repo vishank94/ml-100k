@@ -31,6 +31,7 @@ class RatingsBreakdown(MRJob):
         #yield key, sum(values)
     
     def reducer_sort_ratings(self, key, values): #should be yield output from previous reducer
+        #remember streaming treats inputs and outputs as strings
         sorterDict = {key:values}
         keylist = sorterDict.keys()
         keylist = sorted(keylist)
