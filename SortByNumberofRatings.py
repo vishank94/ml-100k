@@ -33,7 +33,7 @@ class RatingsBreakdown(MRJob):
     def reducer_sort_ratings(self, key, values): #should be yield output from previous reducer
         sorterDict = {key:values}
         keylist = sorterDict.keys()
-        keylist.sort()
+        keylist = sorted(keylist)
         for key in keylist:
             yield key, sorterDict[key] #returns generator iterator but all data computed in just one call of the function  
 
